@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 
-#include "cape_info.h"
-
 #include "spdlog/spdlog.h"
 #include "spdlog/common.h"
 
@@ -40,8 +38,6 @@ public Q_SLOTS:
     void on_menuRecent_triggered();
     void on_actionClear_triggered();
 
-    void RedrawStringPortList(QString const& string);
-
     void LogMessage(QString const& message , spdlog::level::level_enum llvl = spdlog::level::level_enum::debug);
 
 private:
@@ -51,19 +47,9 @@ private:
     std::unique_ptr<QSettings> settings{ nullptr };
     QString appdir;
 
-    cape_info m_cape;
-
-    void ReadCapeInfo(QString const& file);
-    void CreateStringsList(QString const& folder);
-    void ReadGPIOFile(QString const& folder);
-    void ReadOtherFile(QString const& folder);
-
     void AddRecentList(QString const& project);
     void RedrawRecentList();
 
-    void LoadEEPROM(QString const& filepath);
-    QMap<QString, QString> GetFirmwareURLList() const;
-    void DownloadFirmware(QString const& name, QString const& url);
 
 };
 #endif // MAINWINDOW_H

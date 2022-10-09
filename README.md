@@ -1,13 +1,11 @@
-### CapeEEPROMViewer
+### EffectsGen
 
-A tool to "View" FPP Cape EEPROM Files.
-
-Requires Windows 10 April 2018 Update or newer
+A tool to Gererate Effects.
 
 ### Building
 Uses C++20, QT 5.15, spdlog, and cMake.
 
-```git clone https://github.com/computergeek1507/CapeEEPROMViewer.git```
+```git clone https://github.com/computergeek1507/EffectsGen.git```
 
 To build on Windows, use Visual Studio 2022
 
@@ -22,5 +20,5 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
-./CapeEEPROMViewer
+./EffectsGen
 ```
