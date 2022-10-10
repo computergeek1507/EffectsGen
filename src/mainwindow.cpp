@@ -64,8 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	settings = std::make_unique< QSettings>(appdir + "/settings.ini", QSettings::IniFormat);
 
-	RedrawRecentList();
-
+	
 	bool ssl = QSslSocket::supportsSsl();
 	QString const sslFile = QSslSocket::sslLibraryBuildVersionString();
 
@@ -112,61 +111,6 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::on_actionOpen_Logs_triggered()
 {
 	QDesktopServices::openUrl(QUrl::fromLocalFile(appdir + "/log/"));
-}
-
-void MainWindow::on_menuRecent_triggered()
-{
-	auto recentItem = qobject_cast<QAction*>(sender());
-	if (recentItem && !recentItem->data().isNull())
-	{
-		auto const project = qvariant_cast<QString>(recentItem->data());
-		
-	}
-}
-
-void MainWindow::on_actionClear_triggered()
-{
-	ui->menuRecent->clear();
-	settings->remove("Recent_ProjectsList");
-
-	ui->menuRecent->addSeparator();
-	ui->menuRecent->addAction(ui->actionClear);
-}
-void MainWindow::AddRecentList(QString const& file)
-{
-	auto recentProjectList = settings->value("Recent_ProjectsList").toStringList();
-
-	recentProjectList.push_front(file);
-	recentProjectList.removeDuplicates();
-	if (recentProjectList.size() > 10)
-	{
-		recentProjectList.pop_back();
-	}
-	settings->setValue("Recent_ProjectsList", recentProjectList);
-	settings->sync();
-	RedrawRecentList();
-}
-
-void MainWindow::RedrawRecentList()
-{
-	ui->menuRecent->clear();
-	auto recentProjectList = settings->value("Recent_ProjectsList").toStringList();
-	for (auto const& file : recentProjectList)
-	{
-		if (!QFile::exists(file))
-		{
-			continue;
-		}
-		QFileInfo fileInfo(file);
-		auto* recentpn = new QAction(this);
-		recentpn->setText(fileInfo.dir().dirName() + "/" + fileInfo.fileName());
-		recentpn->setData(fileInfo.absoluteFilePath());
-		ui->menuRecent->addAction(recentpn);
-		connect(recentpn, &QAction::triggered, this, &MainWindow::on_menuRecent_triggered);
-	}
-
-	ui->menuRecent->addSeparator();
-	ui->menuRecent->addAction(ui->actionClear);
 }
 
 void MainWindow::LogMessage(QString const& message, spdlog::level::level_enum llvl)

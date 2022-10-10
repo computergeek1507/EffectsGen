@@ -2,11 +2,11 @@
 
 #include <QAudioDecoder>
 
-Track::Track(Track::TrackType type, QWidget *parent)
+Track::Track( QWidget *parent)
     : QCustomPlot(parent)
     , decoder(new QAudioDecoder(this))
 {
-    this->type = type;    
+   // this->type = type;    
     wavePlot = addGraph();    
     setMinimumHeight(50);    
     connect(decoder, SIGNAL(bufferReady()), this, SLOT(setBuffer()));

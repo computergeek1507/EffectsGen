@@ -11,7 +11,7 @@ class Track : public QCustomPlot
     Q_OBJECT
 
 public:
-    Track(TrackType type, QWidget *parent = Q_NULLPTR);
+    Track( QWidget *parent = Q_NULLPTR);
     ~Track();
     void setSource(const QString &fileName);
 

@@ -35,9 +35,6 @@ public Q_SLOTS:
     void on_actionAbout_triggered();
     void on_actionOpen_Logs_triggered();
 
-    void on_menuRecent_triggered();
-    void on_actionClear_triggered();
-
     void LogMessage(QString const& message , spdlog::level::level_enum llvl = spdlog::level::level_enum::debug);
 
 private:
@@ -46,9 +43,6 @@ private:
     std::shared_ptr<spdlog::logger> logger{ nullptr };
     std::unique_ptr<QSettings> settings{ nullptr };
     QString appdir;
-
-    void AddRecentList(QString const& project);
-    void RedrawRecentList();
 
 
 };

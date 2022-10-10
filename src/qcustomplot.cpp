@@ -15231,6 +15231,7 @@ void QCustomPlot::rescaleAxes(bool onlyVisiblePlottables)
 
   \see savePng, saveBmp, saveJpg, saveRastered
 */
+/*
 bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::ExportPen exportPen, const QString &pdfCreator, const QString &pdfTitle)
 {
   bool success = false;
@@ -15292,7 +15293,7 @@ bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::E
   setViewport(oldViewport);
 #endif // QT_NO_PRINTER
   return success;
-}
+}*/
 
 /*!
   Saves a PNG image file to \a fileName on disc. The output plot will have the dimensions \a width
