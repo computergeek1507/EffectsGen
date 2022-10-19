@@ -4,6 +4,8 @@
 
 #include "config.h"
 
+#include "xlightsconnection.h"
+
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QSettings>
@@ -63,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
 	setWindowTitle(windowTitle() + " v" + PROJECT_VER);
 
 	settings = std::make_unique< QSettings>(appdir + "/settings.ini", QSettings::IniFormat);
-
+	xLightsConn = std::make_unique< xLightsConnection>();
 	
 	bool ssl = QSslSocket::supportsSsl();
 	QString const sslFile = QSslSocket::sslLibraryBuildVersionString();
@@ -80,18 +82,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionOpen_EEPROM_triggered()
+void MainWindow::on_actionConnect_xLights_triggered()
 {
-	QString const EEPROM = QFileDialog::getOpenFileName(this, "Select EEPROM File", settings->value("last_project").toString(), tr("EEPROM Files (*.bin);;All Files (*.*)"));
-	if (!EEPROM.isEmpty())
-	{
-		
-	}
-}
-
-void MainWindow::on_actionDownload_EEPROM_triggered()
-{
-	
+	xLightsConn->Connect();
 }
 
 void MainWindow::on_actionClose_triggered()

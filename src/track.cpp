@@ -8,7 +8,7 @@ Track::Track( QWidget *parent)
 {
    // this->type = type;    
     wavePlot = addGraph();    
-    setMinimumHeight(50);    
+    setMinimumHeight(100);    
     connect(decoder, SIGNAL(bufferReady()), this, SLOT(setBuffer()));
     connect(decoder, SIGNAL(finished()), this, SLOT(plot()));
 }

@@ -18,6 +18,8 @@ class QTableWidget;
 class QSettings;
 QT_END_NAMESPACE
 
+class xLightsConnection;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -28,8 +30,7 @@ public:
 
 public Q_SLOTS:
 
-    void on_actionOpen_EEPROM_triggered();
-    void on_actionDownload_EEPROM_triggered();
+    void on_actionConnect_xLights_triggered();
     void on_actionClose_triggered();
 
     void on_actionAbout_triggered();
@@ -42,6 +43,7 @@ private:
 
     std::shared_ptr<spdlog::logger> logger{ nullptr };
     std::unique_ptr<QSettings> settings{ nullptr };
+    std::unique_ptr <xLightsConnection> xLightsConn{ nullptr };
     QString appdir;
 
 
