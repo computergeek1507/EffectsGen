@@ -45,6 +45,7 @@ public Q_SLOTS:
     void on_hs_EndTime_valueChanged(int);
 
     void on_cb_Effects_currentTextChanged(QString);
+    void on_cb_Models_currentTextChanged(QString);
     void on_tw_Properties_cellDoubleClicked(int, int);
 
     void on_pb_add_clicked();

@@ -116,11 +116,15 @@ void MainWindow::on_hs_StartTime_valueChanged(int value)
 {
 	//ms not ticks
 	m_ui->le_StartTime->setText( FormatTime(value) );
+	m_settings->setValue("lastStartTime", value );
+	m_settings->sync();
 }
 
 void MainWindow::on_hs_EndTime_valueChanged(int value)
 {
 	m_ui->le_EndTime->setText( FormatTime(value ) );
+	m_settings->setValue("lastEndTime", value );
+	m_settings->sync();
 }
 
 void MainWindow::on_ModelsUpdated(QStringList models)
@@ -185,6 +189,15 @@ void MainWindow::on_cb_Effects_currentTextChanged(QString name)
 	}
 
 	m_ui->tw_Properties->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+	m_settings->setValue("lastEffect", name );
+	m_settings->sync();
+}
+
+void MainWindow::on_cb_Models_currentTextChanged(QString name)
+{
+	m_settings->setValue("lastModel", name );
+	m_settings->sync();
 }
 
 void MainWindow::on_tw_Properties_cellDoubleClicked(int row, int column)
