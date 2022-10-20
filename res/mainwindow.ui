@@ -55,7 +55,17 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="hs_endTime">
+       <widget class="QLineEdit" name="le_StartTime">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="hs_EndTime">
         <property name="maximum">
          <number>100</number>
         </property>
@@ -70,16 +80,99 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLineEdit" name="le_EndTime">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
-     <widget class="QComboBox" name="cb_Model"/>
+     <widget class="QComboBox" name="cb_Models"/>
     </item>
     <item>
-     <widget class="QComboBox" name="cb_Effect"/>
+     <widget class="QComboBox" name="cb_Effects"/>
     </item>
     <item>
-     <widget class="QTableWidget" name="tableWidget"/>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="sb_Layer">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Length:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="sb_Length">
+        <property name="suffix">
+         <string>ms</string>
+        </property>
+        <property name="minimum">
+         <number>25</number>
+        </property>
+        <property name="maximum">
+         <number>10000000</number>
+        </property>
+        <property name="singleStep">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Gap:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="sb_Gap">
+        <property name="suffix">
+         <string>ms</string>
+        </property>
+        <property name="maximum">
+         <number>10000000</number>
+        </property>
+        <property name="singleStep">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tw_Properties">
+      <property name="columnCount">
+       <number>2</number>
+      </property>
+      <column/>
+      <column/>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pb_add">
@@ -100,7 +193,7 @@
      <x>0</x>
      <y>0</y>
      <width>1074</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -149,30 +242,6 @@
     <string>Connect to xLights</string>
    </property>
   </action>
-  <action name="actionOpen_Explorer">
-   <property name="text">
-    <string>Open Explorer</string>
-   </property>
-  </action>
-  <action name="actionImport_PartList">
-   <property name="text">
-    <string>PartList CSV...</string>
-   </property>
-  </action>
-  <action name="actionImport_Rename_Map">
-   <property name="text">
-    <string>Rename CSV...</string>
-   </property>
-  </action>
-  <action name="actionReload_Project">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/arrow_refresh_small.png</normaloff>:/EffectsGen/icons/arrow_refresh_small.png</iconset>
-   </property>
-   <property name="text">
-    <string>Reload Project</string>
-   </property>
-  </action>
   <action name="actionAbout">
    <property name="icon">
     <iconset resource="EffectsGen.qrc">
@@ -180,77 +249,6 @@
    </property>
    <property name="text">
     <string>About...</string>
-   </property>
-  </action>
-  <action name="actionImport_Parts_from_Schematic">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/report_add.png</normaloff>:/EffectsGen/icons/report_add.png</iconset>
-   </property>
-   <property name="text">
-    <string>PartList from Schematic...</string>
-   </property>
-  </action>
-  <action name="actionExport_PartList_CSV">
-   <property name="text">
-    <string>PartList CSV...</string>
-   </property>
-  </action>
-  <action name="actionExport_Rename_CSV">
-   <property name="text">
-    <string>Rename CSV...</string>
-   </property>
-  </action>
-  <action name="actionOverride">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Override Existing Parts</string>
-   </property>
-  </action>
-  <action name="actionSet_Library_Folder">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/folder_table.png</normaloff>:/EffectsGen/icons/folder_table.png</iconset>
-   </property>
-   <property name="text">
-    <string>Set Library Folder</string>
-   </property>
-  </action>
-  <action name="actionLibrary_Report">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/report_go.png</normaloff>:/EffectsGen/icons/report_go.png</iconset>
-   </property>
-   <property name="text">
-    <string>Library Report...</string>
-   </property>
-  </action>
-  <action name="actionBOM_CSV">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/table.png</normaloff>:/EffectsGen/icons/table.png</iconset>
-   </property>
-   <property name="text">
-    <string>BOM CSV...</string>
-   </property>
-  </action>
-  <action name="actionClear">
-   <property name="icon">
-    <iconset resource="EffectsGen.qrc">
-     <normaloff>:/EffectsGen/icons/cross.png</normaloff>:/EffectsGen/icons/cross.png</iconset>
-   </property>
-   <property name="text">
-    <string>Clear</string>
-   </property>
-  </action>
-  <action name="actionDownload_EEPROM">
-   <property name="text">
-    <string>Download EEPROM...</string>
    </property>
   </action>
  </widget>

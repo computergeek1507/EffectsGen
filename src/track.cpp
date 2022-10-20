@@ -46,6 +46,11 @@ void Track::plot()
     wavePlot->addData(x, samples);
     yAxis->setRange(QCPRange(-1, 1));
     xAxis->setRange(QCPRange(0, samples.size()));
+
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%m:%s.%z");
+    xAxis->setTicker(timeTicker);
+
     replot();
 }
 
